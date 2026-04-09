@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<section class="card">
+    <h1>{{ page_title }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="actions">
+            <input type="submit" value="Save order">
+            <a class="button secondary" href="{% url 'order_list' %}">Cancel</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

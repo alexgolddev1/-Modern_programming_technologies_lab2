@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}CRUD App{% endblock %}</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #f5f3ee;
+            --panel: #fffdf8;
+            --ink: #1f2933;
+            --accent: #9f3a2f;
+            --accent-dark: #7c291f;
+            --line: #dccfc0;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at top left, #efe4d3, transparent 24rem),
+                linear-gradient(180deg, #f9f7f2, var(--bg));
+        }
+        nav {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 253, 248, 0.92);
+            border-bottom: 1px solid var(--line);
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(8px);
+        }
+        nav a {
+            color: var(--accent-dark);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        main {
+            max-width: 980px;
+            margin: 2rem auto;
+            padding: 0 1rem 2rem;
+        }
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 1.5rem;
+            box-shadow: 0 12px 30px rgba(58, 35, 17, 0.08);
+        }
+        .hero {
+            display: grid;
+            gap: 1.25rem;
+            padding: 2rem;
+            background:
+                linear-gradient(135deg, rgba(159, 58, 47, 0.12), rgba(255, 253, 248, 0.95)),
+                var(--panel);
+        }
+        .eyebrow {
+            margin: 0;
+            color: var(--accent-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(2.1rem, 5vw, 4rem);
+            line-height: 0.95;
+            max-width: 10ch;
+        }
+        .hero p {
+            margin: 0;
+            max-width: 42rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+        .stat {
+            padding: 1.1rem 1.2rem;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.55);
+        }
+        .stat-label {
+            display: block;
+            margin-bottom: 0.35rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #6b7280;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+        }
+        .button,
+        button,
+        input[type="submit"] {
+            border: 0;
+            border-radius: 999px;
+            padding: 0.75rem 1.1rem;
+            background: var(--accent);
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .button.secondary {
+            background: #d3c0ab;
+            color: var(--ink);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 0.8rem;
+            border-bottom: 1px solid var(--line);
+            text-align: left;
+        }
+        form p {
+            display: grid;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 10px;
+            border: 1px solid #c8baa8;
+            font: inherit;
+            background: #fff;
+        }
+        .actions {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .button-link {
+            color: inherit;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="{% url 'home' %}">Лабораторна робота 2 </a>
+    <div class="actions">
+        <a href="{% url 'order_list' %}">Orders</a>
+        <a href="{% url 'order_create' %}">New order</a>
+        <a href="/admin/">Admin</a>
+    </div>
+</nav>
+<main>
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

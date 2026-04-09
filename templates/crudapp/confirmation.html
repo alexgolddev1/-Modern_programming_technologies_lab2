@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}Delete Order{% endblock %}
+
+{% block content %}
+<section class="card">
+    <h1>Delete order</h1>
+    <p>Удалить заказ <strong>#{{ order.oid }}</strong> для {{ order.fname }} {{ order.lname }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="actions">
+            <input type="submit" value="Yes, delete">
+            <a class="button secondary" href="{% url 'order_list' %}">No</a>
+        </div>
+    </form>
+</section>
+{% endblock %}
